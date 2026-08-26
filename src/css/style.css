@@ -1,0 +1,503 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap");
+
+:root {
+  --background-color: #eef0e9;
+  --header-background-color: #f7f8f4;
+  --heading-color: #1b1f1d;
+  --text-color: #3a3f3b;
+  --primary-accent-color: #3f5b4a;
+  --secondary-accent-color: #2c4235;
+  --follow-button-color: #b5652b;
+  --follow-button-hover-color: #914f20;
+  --muted-text-color: #8a8f86;
+  --border-color: #d6d9ce;
+  --error-color: #a83b2c;
+
+  --font-mono:
+    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+h1 {
+  color: var(--heading-color);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  margin-bottom: 5rem;
+  letter-spacing: 0.3rem;
+}
+
+p {
+  color: var(--text-color);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+button {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+#login-btn {
+  background-color: var(--primary-accent-color);
+  color: white;
+}
+
+#login-btn:hover {
+  background-color: var(--secondary-accent-color);
+}
+
+#register-btn {
+  background-color: var(--background-color);
+  color: var(--primary-accent-color);
+  border: 1px solid var(--primary-accent-color);
+}
+
+#register-btn:hover {
+  background-color: var(--primary-accent-color);
+  color: white;
+}
+
+/* ========= LOGIN and REGISTER FORM STYLES ========= */
+.login-container,
+.register-container,
+.post-container,
+.profile-container,
+.comment-container,
+.comments-container {
+  width: 92%;
+  max-width: 620px;
+  margin: 3rem auto;
+  padding: 24px 18px;
+  background-color: var(--header-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.login-container h1,
+.register-container h1 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--heading-color);
+  margin-bottom: 5rem;
+}
+
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  width: 100%;
+  margin-top: 38px;
+}
+
+.login-form label,
+.register-form label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: var(--text-color);
+  margin-top: 20px;
+}
+
+.login-form label:first-of-type,
+.register-form label:first-of-type {
+  margin-top: 0px;
+}
+
+.login-form input,
+.register-form input {
+  width: 100%;
+  height: 38px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--text-color);
+}
+
+.login-form input:focus,
+.register-form input:focus {
+  border-color: var(--primary-accent-color);
+  outline: none;
+}
+
+.login-form #login-btn,
+.register-form #register-btn {
+  width: 100%;
+  margin: 10px 0 0;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-accent-color);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+.login-form #login-btn:hover,
+.register-form #register-btn:hover {
+  background-color: var(--secondary-accent-color);
+}
+
+.login-container p,
+.register-container p {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--muted-text-color);
+  margin-top: 20px;
+}
+
+body > h2 {
+  width: 92%;
+  max-width: 620px;
+  margin: 3rem auto 1rem;
+  color: var(--heading-color);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.15rem;
+}
+
+.login-container p a,
+.register-container p a {
+  color: var(--primary-accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  text-underline-offset: 2px;
+}
+
+.error-message {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--error-color);
+  margin-top: 5px;
+  display: none;
+}
+
+/* ========= POST FORM STYLES ========= */
+.post-container .back-link {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: var(--primary-accent-color);
+  text-decoration: none;
+  resize: vertical;
+}
+
+.post-container .back-link:hover {
+  text-decoration: underline;
+}
+
+.post-container h1 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--heading-color);
+  margin: 1rem 0 1rem;
+  font-weight: 600;
+}
+
+.post-container p {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--text-color);
+  margin: 1rem 0 1rem;
+  line-height: 1.5rem;
+}
+
+.post-container img {
+  max-width: 100%;
+  border-radius: 4px;
+  height: auto;
+  margin: 1rem 0;
+  border: 1px solid var(--border-color);
+}
+
+.post-container .author {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.5rem;
+}
+
+#tags {
+  margin-bottom: 0.7rem;
+}
+
+#tags p {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+#tags p a {
+  color: var(--primary-accent-color);
+  text-decoration: none;
+}
+
+#tags p a:hover {
+  text-decoration: underline;
+  transition:
+    color 0.3s ease,
+    text-decoration 0.3s ease;
+}
+
+.post-container .post-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.post-container .post-actions button {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.post-container .post-actions button#react-btn {
+  background: transparent;
+  border: 1px solid var(--follow-button-color);
+  color: var(--follow-button-color);
+}
+
+.post-container .post-actions button#react-btn:hover {
+  background-color: var(--follow-button-hover-color);
+  color: white;
+}
+
+.post-container .post-actions button#edit-btn {
+  background: transparent;
+  border: 1px solid var(--primary-accent-color);
+  color: var(--primary-accent-color);
+}
+
+.post-container .post-actions button#edit-btn:hover {
+  background-color: var(--primary-accent-color);
+  color: white;
+}
+.post-container .post-actions button#delete-btn {
+  background: transparent;
+  border: 1px solid var(--error-color);
+  color: var(--error-color);
+}
+
+.post-container .post-actions button#delete-btn:hover {
+  background-color: var(--error-color);
+  color: white;
+}
+
+/* ========= PROFILE STYLES ========= */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info h1 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+}
+
+.profile-info p#followers-posts {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-info p#bio {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.087rem;
+}
+
+#follow-btn,
+#unfollow-btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+.profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+#follow-btn {
+  border: 1px solid var(--follow-button-color);
+  background-color: var(--follow-button-color);
+  color: white;
+}
+
+#follow-btn:hover {
+  background-color: var(--follow-button-hover-color);
+  border-color: var(--follow-button-hover-color);
+}
+
+#unfollow-btn {
+  border: 1px solid var(--error-color);
+  background-color: transparent;
+  color: var(--error-color);
+}
+
+#unfollow-btn:hover {
+  background-color: var(--error-color);
+  color: white;
+}
+
+#follow-btn:focus-visible,
+#unfollow-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+#edit-profile-btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-accent-color);
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--primary-accent-color);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+#edit-profile-btn:hover {
+  background-color: var(--primary-accent-color);
+  color: white;
+}
+
+#edit-profile-btn:focus-visible {
+  outline: 2px solid var(--primary-accent-color);
+  outline-offset: 3px;
+}
+
+#profile-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#profile-posts .post {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-header .post-info h2 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+}
+
+.post-header .post-info h2 a {
+  color: var(--primary-accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  text-underline-offset: 2px;
+}
+
+.post-header .post-info h2 a:hover {
+  color: var(--primary-accent-color-hover);
+  transition: color 0.3s ease;
+}
+
+.post-header .post-info p {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.post-content p {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.author {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
