@@ -2,36 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COMMONS</title>
     <link rel="stylesheet" href="src/css/style.css" />
   </head>
   <body>
-    <div id="app">
-      <main class="container">
-        <h1>COMMONS</h1>
-        <p>
-          Post updates, share ideas, follow people, see what's new, find people
-          in COMMONS.
-        </p>
-        <div class="btn-container">
-          <button
-            class="btn"
-            id="login-btn"
-            onclick="location.href = 'pages/auth/login.html'"
-          >
-            LOGIN
-          </button>
-          <button
-            class="btn"
-            id="register-btn"
-            onclick="location.href = 'pages/auth/register.html'"
-          >
-            REGISTER
-          </button>
-        </div>
-      </main>
-    </div>
+    <div id="app"></div>
+    <script type="module" src="/src/ui/main.ts"></script>
   </body>
 </html>
