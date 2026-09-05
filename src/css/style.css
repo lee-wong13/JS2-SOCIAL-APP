@@ -89,7 +89,8 @@ button {
 .post-container,
 .profile-container,
 .comment-container,
-.comments-container {
+.comments-container,
+.feed-container {
   width: 92%;
   max-width: 620px;
   margin: 3rem auto;
@@ -203,6 +204,144 @@ body > h2 {
   color: var(--error-color);
   margin-top: 5px;
   display: none;
+}
+
+/* ====== FEED STYLES ====== */
+
+.feed-container {
+  padding: 16px 20px 28px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.feed-container #create-post-section {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.feed-container #create-post-section h2 {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--heading-color);
+  margin: 0 0 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+}
+
+#create-post-form input[type="text"],
+#create-post-form input[type="url"],
+#create-post-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 0 0 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--text-color);
+}
+
+#create-post-button {
+  width: 100%;
+  margin: 10px 0 0;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-accent-color);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+#create-post-button:hover {
+  background-color: var(--secondary-accent-color);
+}
+
+#feed-section {
+  padding: 16px 20px 28px;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  margin: 0 0 14px;
+}
+
+#feed-section:last-child {
+  border-bottom: none;
+}
+
+#feed-section .postcard {
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  margin: 0 0 14px;
+}
+
+#feed-section .post-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+#feed-section .post-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+#feed-section .post-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--heading-color);
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+#feed-section .post-card h3 a {
+  text-decoration: none;
+  color: var(--primary-accent-color);
+}
+
+#feed-section .post-card p {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--text-color);
+  margin: 0 0 1rem;
+  line-height: 1.5rem;
+}
+
+#feed-section .post-card .image {
+  max-width: 100%;
+  border-radius: 4px;
+  height: auto;
+  margin: 1rem 0;
+  border: 1px solid var(--border-color);
+}
+
+#feed-section .post-card .author {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.5rem;
+}
+
+#feed-section .post-card .date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ========= POST FORM STYLES ========= */
