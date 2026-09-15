@@ -1,8 +1,8 @@
 import "../../css/style.css";
 
 import type { LoginCredentials } from "../../api/auth.ts";
-import { loginUser } from "../../api/auth.ts";
-import { saveSession } from "../../utils/storages.ts";
+import { createApiKey, loginUser } from "../../api/auth.ts";
+import { loadApiKey, saveApiKey, saveSession } from "../../utils/storages.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 <main class="login-container">
@@ -10,11 +10,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <form class="login-form" action="../../js/ui/auth/login.js" method="POST">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
-        <div id="email-error" class="error-message">! Invalid Email</div>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
-        <div id="password-error" class="error-message">! Invalid Password</div>
         <button type="submit" id="login-btn">LOGIN</button>
+        <div id="login-error" class="error-message"></div>
       </form>
       <p>New here? <a href="register.html">Register</a></p>
 </main>
@@ -25,12 +24,18 @@ const form = document.querySelector<HTMLFormElement>(
 ) as HTMLFormElement;
 
 const errorMessage = document.querySelector<HTMLDivElement>(
-  ".error-message",
+  "#login-error",
 ) as HTMLDivElement;
+
+function showError(message: string): void {
+  errorMessage.textContent = message;
+  errorMessage.style.display = "block";
+}
 
 form.addEventListener("submit", async (event: SubmitEvent) => {
   event.preventDefault();
   errorMessage.textContent = "";
+  errorMessage.style.display = "none";
 
   const formData = new FormData(form);
   const email = formData.get("email") as string;
@@ -43,6 +48,10 @@ form.addEventListener("submit", async (event: SubmitEvent) => {
 
   try {
     const response = await loginUser(credentials);
+    const apiKey =
+      loadApiKey() ?? (await createApiKey(response.data.accessToken));
+
+    saveApiKey(apiKey);
     saveSession(response.data.accessToken, {
       id: response.data.name,
       username: response.data.name,
@@ -50,10 +59,10 @@ form.addEventListener("submit", async (event: SubmitEvent) => {
     });
 
     alert("Login successful!");
-    window.location.href = "pages/feed/index.html";
+    window.location.assign("/pages/feed/index.html");
   } catch (error) {
     if (error instanceof Error) {
-      errorMessage.textContent = error.message;
+      showError(error.message);
     }
   }
 });

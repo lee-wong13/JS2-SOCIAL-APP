@@ -20,6 +20,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           uppercase letter, one lowercase letter, and one number
         </div>
         <button type="submit" id="register-btn">REGISTER</button>
+        <div id="register-error" class="error-message"></div>
       </form>
       <p>Already have an account? <a href="login.html">Login</a></p>
     </main>
@@ -29,35 +30,60 @@ const form = document.querySelector<HTMLFormElement>(
   ".register-form",
 ) as HTMLFormElement;
 const errorMessage = document.querySelector<HTMLDivElement>(
-  ".error-message",
+  "#register-error",
 ) as HTMLDivElement;
+
+function showError(message: string): void {
+  errorMessage.textContent = message;
+  errorMessage.style.display = "block";
+}
 
 form.addEventListener("submit", async (event: SubmitEvent) => {
   event.preventDefault();
   errorMessage.textContent = "";
+  errorMessage.style.display = "none";
 
   const formData = new FormData(form);
 
-  const email = formData.get("email") as string;
+  const name = (formData.get("username") as string).trim();
+  const email = (formData.get("email") as string).trim().toLowerCase();
+  const password = formData.get("password") as string;
 
   if (!email.endsWith("@stud.noroff.no")) {
-    errorMessage.textContent = "Use your @stud.noroff.no email address";
+    showError("Use your @stud.noroff.no email address");
+    return;
+  }
+
+  if (name.length < 3) {
+    showError("Username must be at least 3 characters long");
+    return;
+  }
+
+  if (
+    password.length < 8 ||
+    !/[A-Z]/.test(password) ||
+    !/[a-z]/.test(password) ||
+    !/[0-9]/.test(password)
+  ) {
+    showError(
+      "Password must be at least 8 characters and contain uppercase, lowercase, and a number",
+    );
     return;
   }
 
   const userData: RegisterData = {
-    name: formData.get("username") as string,
+    name,
     email,
-    password: formData.get("password") as string,
+    password,
   };
 
   try {
     await registerUser(userData);
     alert("Registration successful!");
-    window.location.href = "./login.html";
+    window.location.assign("login.html");
   } catch (error) {
     if (error instanceof Error) {
-      errorMessage.textContent = error.message;
+      showError(error.message);
     }
   }
 });
