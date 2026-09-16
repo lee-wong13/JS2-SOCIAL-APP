@@ -57,7 +57,7 @@ form.addEventListener("submit", async (event: SubmitEvent) => {
     });
 
     alert("Login successful!");
-    window.location.assign("../pages/feed/index.html");
+    window.location.assign("../feed/index.html");
   } catch (error) {
     if (error instanceof Error) {
       showError(error.message);
