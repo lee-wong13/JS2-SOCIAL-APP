@@ -1,4 +1,4 @@
-import"./style-D_OV_7b4.js";import{c as e,d as t,n,r,t as i}from"./auth-guard-CoWEjUP7.js";i();var a=document.querySelector(`#app`);a.append(r()),a.insertAdjacentHTML(`beforeend`,`
+import"./style-D_OV_7b4.js";import{c as e,d as t,n,r,t as i}from"./auth-guard-C5xE-l6d.js";i();var a=document.querySelector(`#app`);a.append(r()),a.insertAdjacentHTML(`beforeend`,`
 <main class="feed-container">
       <section id="create-post-section">
         <button id="toggle-create-post" class="create-post-toggle" type="button" aria-expanded="false" aria-controls="create-post-form">

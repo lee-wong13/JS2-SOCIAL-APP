@@ -1,4 +1,4 @@
-import"./style-D_OV_7b4.js";import{r as e}from"./storages-Bs5-gApI.js";import{a as t,c as n,i as r,n as i,o as a,r as o,s,t as c}from"./auth-guard-CoWEjUP7.js";var l=`/JS2-SOCIAL-APP/assets/hero-CLDdwZDr.png`;c();var u=document.querySelector(`#app`);u.append(o()),u.insertAdjacentHTML(`beforeend`,`
+import"./style-D_OV_7b4.js";import{r as e}from"./storages-Bs5-gApI.js";import{a as t,c as n,i as r,n as i,o as a,r as o,s,t as c}from"./auth-guard-C5xE-l6d.js";var l=`/JS2-SOCIAL-APP/assets/hero-CLDdwZDr.png`;c();var u=document.querySelector(`#app`);u.append(o()),u.insertAdjacentHTML(`beforeend`,`
 <main class="profile-container profile-page">
   <div class="profile-banner">
     <img id="profile-banner-image" src="${l}" alt="" />

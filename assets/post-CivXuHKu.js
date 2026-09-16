@@ -1,4 +1,4 @@
-import"./style-D_OV_7b4.js";import{r as e}from"./storages-Bs5-gApI.js";import{f as t,l as n,n as r,r as i,t as a,u as o}from"./auth-guard-CoWEjUP7.js";a();var s=document.querySelector(`#app`);s.append(i()),s.insertAdjacentHTML(`beforeend`,`
+import"./style-D_OV_7b4.js";import{r as e}from"./storages-Bs5-gApI.js";import{f as t,l as n,n as r,r as i,t as a,u as o}from"./auth-guard-C5xE-l6d.js";a();var s=document.querySelector(`#app`);s.append(i()),s.insertAdjacentHTML(`beforeend`,`
     <main class="post-container">
       <a href="../feed/index.html" class="back-link">&larr; Feed</a>
 
