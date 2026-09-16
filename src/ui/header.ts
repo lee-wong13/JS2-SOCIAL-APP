@@ -10,7 +10,7 @@ export function renderHeader(): HTMLElement {
 
   const homeLink = document.createElement("a");
   homeLink.className = "site-header__brand";
-  homeLink.href = "/pages/feed/index.html";
+  homeLink.href = "../feed/index.html";
   homeLink.textContent = "COMMONS";
 
   const userMenu = document.createElement("div");
@@ -46,7 +46,7 @@ export function renderHeader(): HTMLElement {
   menu.className = "site-header__menu";
 
   const profileLink = document.createElement("a");
-  profileLink.href = "/pages/profile/index.html";
+  profileLink.href = "../profile/index.html";
   profileLink.textContent = "View profile";
 
   const logoutButton = document.createElement("button");
@@ -54,7 +54,7 @@ export function renderHeader(): HTMLElement {
   logoutButton.textContent = "Logout";
   logoutButton.addEventListener("click", () => {
     clearSession();
-    window.location.assign("/pages/auth/login.html");
+    window.location.assign("../auth/login.html");
   });
 
   menu.append(profileLink, logoutButton);
