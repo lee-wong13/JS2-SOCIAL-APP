@@ -24,6 +24,7 @@ export interface Author {
   name: string;
   email?: string;
   bio?: string;
+  avatar?: Media;
 }
 
 export interface Profile {
