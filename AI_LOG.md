@@ -1,66 +1,106 @@
 # AI LOG
 
-27 august 2026
+## Project: JS2 Social App
 
-Prompt: Could you help me with bulding a folder structure for the project?
+This project is a Vite + TypeScript frontend for a social media app using the Noroff API. The app is structured as a multi-page frontend with shared API, UI, and utility modules.
 
-social-app/
-├── index.html → redirects to /auth/login or /feed depending on auth state
-├── README.md
-├── .gitignore
-│
-├── /css
-│ └── style.css → single basic stylesheet (shared across pages)
-│
-├── /pages
-│ ├── /auth
-│ │ ├── login.html
-│ │ └── register.html
-│ ├── /feed
-│ │ └── index.html → posts/feed page
-│ ├── /post
-│ │ └── index.html → individual post page (?id=123)
-│ └── /profile
-│ └── index.html → own profile + other users' profiles (?user=username)
-│
-└── /js
-├── /api
-│ ├── constants.js → BASE_URL, endpoints, API key
-│ ├── headers.js → builds auth headers (token + API key)
-│ ├── auth.js → register(), login()
-│ ├── posts.js → getPosts(), getPost(), createPost(), updatePost(), deletePost(), searchPosts()
-│ └── profiles.js → getProfile(), getUserPosts(), follow(), unfollow()
-│
-├── /ui
-│ ├── /auth
-│ │ ├── register.js → form handler for register page
-│ │ └── login.js → form handler for login page
-│ ├── /post
-│ │ ├── create.js
-│ │ ├── update.js
-│ │ └── delete.js
-│ └── /profile
-│ └── follow.js
-│
-├── /utilities
-│ ├── storage.js → save/load/clear token+profile in localStorage
-│ ├── auth-guard.js → redirect to login if no token present
-│ └── render.js → shared DOM-rendering helpers (post card, etc.)
-│
-└── /router or entry points per page
+### Core idea
 
-Claude AI
+- Frontend only: HTML pages + TypeScript modules
+- Auth flow with login/register and token storage
+- Feed page with posts
+- Post detail page
+- Profile page for viewing user profiles and their content
+- Shared API layer and guarded routes
 
-27 august 2026
+### Current project structure
 
-Prompt: Give me an idea of what I should do first
+- pages/
+  - auth/login.html
+  - auth/register.html
+  - feed/index.html
+  - post/index.html
+  - profile/index.html
+- src/
+  - api/
+    - auth.ts
+    - constants.ts
+    - header.ts
+    - posts.ts
+    - profiles.ts
+  - ui/
+    - feed.ts
+    - main.ts
+    - post.ts
+    - profile.ts
+    - auth/login.ts
+    - auth/register.ts
+  - utils/
+    - auth-guard.ts
+    - render.ts
+    - storages.ts
+  - types.ts
 
-- Get API key, since nothing else in the app will actually work without it.
+### Project decisions
 
-Claude AI
+- Keep the app modular instead of putting everything in one file.
+- Separate API calls from UI rendering.
+- Use localStorage for auth/session persistence.
+- Use a shared auth guard so protected pages redirect to login if no token exists.
+- Keep page HTML templates in pages/ and JS logic in src/ui/.
 
-27 august 2026
+### Build status
+
+- Last verified successfully with: npm run build
+- Exit code: 0
+
+---
+
+## Conversation / prompt log
+
+### 2026-08-27
+
+Prompt: Could you help me with building a folder structure for the project?
+
+Answer:
+
+- Proposed a clean app structure with pages/, css/, and js/ or src/ modules
+- Suggested separate folders for API, UI, utilities, and page templates
+- Emphasized one page = one HTML file + one logic file
+
+### 2026-08-27
+
+Prompt: Give me an idea of what I should do first.
+
+Answer:
+
+- Start with the API key and backend configuration
+- Make sure auth is working before building the UI around it
+- Then move into login/register, feed, post, and profile flows
+
+### 2026-08-27
 
 Prompt: I'm writing the UI for the page but I'm not sure where to put them.
 
-- Each visual page = one HTML file in /pages/ + one JS file that powers it.
+Answer:
+
+- Each screen should have its own HTML page in pages/
+- Its script logic should live in src/ui/ or the matching UI folder
+- Shared rendering helpers go in src/utils/
+
+### 2026-09-03
+
+Promtp: Why is there red line under import and it is unable to import or find values?
+
+Answer:
+
+- Because some value are imported by type
+- Or the values are not being written correctly
+
+### 2026-09-03
+
+Prompt: Where can I find my API_KEY?
+
+Answer:
+
+- By logging in Noroff API
