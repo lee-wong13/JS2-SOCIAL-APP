@@ -1,0 +1,1 @@
+var e=`https://v2.api.noroff.dev`,t=`a58b5e82-f17e-483e-8075-062d94ca6724`,n={register:`${e}/auth/register`,login:`${e}/auth/login`,createApiKey:`${e}/auth/create-api-key`},r={posts:`${e}/social/posts`,users:`${e}/social/profiles`};export{t as n,r,n as t};
