@@ -104,3 +104,14 @@ Prompt: Where can I find my API_KEY?
 Answer:
 
 - By logging in Noroff API
+
+### 2026-16-09
+
+Prompt: I tried to log in it said _failed to create API_ what could fo wrong here?
+
+Answer:
+
+- The error was caused by the login flow trying to create a new API key every time you logged in: await createApiKey(response.data.accessToken)
+- Your project already has an application API key in constants.ts, and Noroff recommends reusing one API key for the whole app. I updated login.ts to use that existing key instead of calling /auth/create-api-key.
+
+CoPilot

@@ -1,8 +1,9 @@
 import "../../css/style.css";
 
 import type { LoginCredentials } from "../../api/auth.ts";
-import { createApiKey, loginUser } from "../../api/auth.ts";
-import { loadApiKey, saveApiKey, saveSession } from "../../utils/storages.ts";
+import { loginUser } from "../../api/auth.ts";
+import { API_KEY } from "../../api/constants.ts";
+import { saveApiKey, saveSession } from "../../utils/storages.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 <main class="login-container">
@@ -48,10 +49,7 @@ form.addEventListener("submit", async (event: SubmitEvent) => {
 
   try {
     const response = await loginUser(credentials);
-    const apiKey =
-      loadApiKey() ?? (await createApiKey(response.data.accessToken));
-
-    saveApiKey(apiKey);
+    saveApiKey(API_KEY);
     saveSession(response.data.accessToken, {
       id: response.data.name,
       username: response.data.name,
