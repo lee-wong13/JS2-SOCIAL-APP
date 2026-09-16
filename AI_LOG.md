@@ -1,61 +1,5 @@
 # AI LOG
 
-## Project: JS2 Social App
-
-This project is a Vite + TypeScript frontend for a social media app using the Noroff API. The app is structured as a multi-page frontend with shared API, UI, and utility modules.
-
-### Core idea
-
-- Frontend only: HTML pages + TypeScript modules
-- Auth flow with login/register and token storage
-- Feed page with posts
-- Post detail page
-- Profile page for viewing user profiles and their content
-- Shared API layer and guarded routes
-
-### Current project structure
-
-- pages/
-  - auth/login.html
-  - auth/register.html
-  - feed/index.html
-  - post/index.html
-  - profile/index.html
-- src/
-  - api/
-    - auth.ts
-    - constants.ts
-    - header.ts
-    - posts.ts
-    - profiles.ts
-  - ui/
-    - feed.ts
-    - main.ts
-    - post.ts
-    - profile.ts
-    - auth/login.ts
-    - auth/register.ts
-  - utils/
-    - auth-guard.ts
-    - render.ts
-    - storages.ts
-  - types.ts
-
-### Project decisions
-
-- Keep the app modular instead of putting everything in one file.
-- Separate API calls from UI rendering.
-- Use localStorage for auth/session persistence.
-- Use a shared auth guard so protected pages redirect to login if no token exists.
-- Keep page HTML templates in pages/ and JS logic in src/ui/.
-
-### Build status
-
-- Last verified successfully with: npm run build
-- Exit code: 0
-
----
-
 ## Conversation / prompt log
 
 ### 2026-08-27
@@ -105,7 +49,23 @@ Answer:
 
 - By logging in Noroff API
 
-### 2026-16-09
+### 2026-09-11
+
+Prompt: Try wiring up the real single-post fetch.
+
+Answer:
+
+- Added a `getPostById()` function in `src/api/posts.ts` (calling `GET /social/posts/:id?_author=true`) and updated `src/ui/post.ts` to read the `?id=` query string and call it, with loading/error states.
+
+### 2026-09-13
+
+Prompt: The image is overflowing the container.
+
+Answer:
+
+- Diagnosed that the existing CSS constrained `max-width` on the `<p class="image">` wrapper but not on the `<img>` element itself, and added `#feed-section .post-card .image img { max-width: 100%; height: auto; }`
+
+### 2026-09-16
 
 Prompt: I tried to log in it said _failed to create API_ what could fo wrong here?
 
