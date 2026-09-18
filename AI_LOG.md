@@ -167,3 +167,18 @@ Reflection:
 - Had to open the real browser and inspect the actual network error (`500 Internal Server Error`) before realizing the problem wasn't JavaScript logic at all, but invalid CSS syntax — a debugging skill that required reading the browser's own error output rather than just asking the AI to guess.
 
 CoPilot
+
+### 2026-09-17
+
+Prompt: After successful logged in, why doesn't it go to the Feed page when the path is already correct?
+
+Answer:
+
+- The login page itself was loading correctly, but login errors were hidden.
+- The path was checked and changed to see if there's anything different, however it did show the same result.
+
+Reflection:
+
+- It was already correct, but GitHub deployment takes time to upload everything.
+
+CoPilot
